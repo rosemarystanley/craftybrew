@@ -1,0 +1,7 @@
+.idea
+.vagrant
+.DS_Store
+._DS_Store
+vendor
+/var/logs/*
+/app/config/parameters.yml
