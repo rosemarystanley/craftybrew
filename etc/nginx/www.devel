@@ -1,0 +1,39 @@
+server {
+    server_name localhost;
+
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    root /var/www/web;
+
+    ssl on;
+    ssl_certificate /var/www/etc/ssl/localhost.crt;
+    ssl_certificate_key /var/www/etc/ssl/localhost.key;
+
+    server_tokens off;
+
+    try_files $uri @rewriteapp;
+
+    location @rewriteapp {
+        rewrite ^(.*)$ /app_dev.php/$1 last;
+    }
+
+    location ~ ^/(app_dev)\.php(/|$) {
+        fastcgi_pass unix:/var/run/php/php-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        include fastcgi_params;
+
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        fastcgi_param PHP_VALUE
+            "default_mimetype = \"\"";
+
+        internal;
+    }
+
+    location ~ \.php$ {
+        return 404;
+    }
+}

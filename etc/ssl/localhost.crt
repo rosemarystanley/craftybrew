@@ -1,0 +1,99 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4096 (0x1000)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=US, ST=North Carolina, L=Indian Trail, O=D42 Studios, LLC, OU=D42 Studios, LLC Certificate Authority, CN=D42 Studios, LLC Root CA
+        Validity
+            Not Before: May 23 01:20:05 2017 GMT
+            Not After : May 21 01:20:05 2027 GMT
+        Subject: C=US, ST=North Carolina, L=Indian Trail, O=D42 Studios, LLC, OU=Software Development, CN=localhost
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (2048 bit)
+                Modulus (2048 bit):
+                    00:b8:a2:c0:f5:b0:d1:cb:ec:04:35:28:07:7f:2e:
+                    2b:2d:30:b6:73:b8:4f:69:c9:00:b8:ea:21:5a:f7:
+                    f0:6c:cf:8e:d8:81:f7:fa:20:c4:a0:79:3f:7e:61:
+                    9b:b5:65:b7:e8:7f:54:45:e7:bb:a0:44:1d:36:f7:
+                    0f:7e:11:04:b7:64:97:54:7a:ac:c6:89:db:d4:54:
+                    31:a9:ad:a1:5c:0a:a1:af:2e:7e:df:ad:81:fa:ad:
+                    a4:ab:dd:78:40:2b:af:25:f2:33:ee:3a:96:aa:70:
+                    66:e7:4d:37:c7:4b:99:46:3e:d6:07:23:e8:9a:42:
+                    87:86:ba:9d:db:f0:8b:e8:f3:a5:00:df:53:cb:14:
+                    e3:c2:ac:e4:26:79:ef:21:38:c1:67:0e:b2:b6:b1:
+                    11:cb:cf:cc:37:bb:52:b7:b6:bf:8e:25:73:5a:70:
+                    21:a7:ad:0b:c8:10:b8:06:24:9e:4e:0b:bd:88:a6:
+                    ad:4f:63:88:d9:53:44:9c:92:1b:e6:92:e6:10:62:
+                    29:71:8c:a3:47:b8:bd:36:16:78:a5:e6:f2:2d:1e:
+                    f8:7f:2c:14:03:f0:25:3a:f8:0b:db:24:28:0f:92:
+                    fe:18:f8:67:73:66:25:86:a1:8d:eb:67:3a:72:94:
+                    a1:84:c4:30:79:78:53:60:06:56:20:32:bc:a9:64:
+                    63:91
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:FALSE
+            X509v3 Key Usage:
+                Digital Signature, Non Repudiation, Key Encipherment
+            X509v3 Subject Alternative Name:
+                DNS:localhost
+    Signature Algorithm: sha256WithRSAEncryption
+        11:68:03:44:90:71:88:64:2f:3e:85:26:05:83:e7:e8:61:ca:
+        70:28:94:79:3c:21:b0:fe:d9:1b:98:d0:70:85:c2:78:9d:9d:
+        9b:90:6f:93:48:77:68:53:ee:72:b0:4f:eb:6e:85:4b:41:56:
+        6e:8d:60:d3:b4:79:2f:ea:e5:10:4b:34:6f:cc:a3:d5:fc:64:
+        e3:ef:9c:69:2c:c8:94:23:ae:e1:2c:9c:a9:35:4d:65:f6:5f:
+        fb:45:49:17:c1:2a:88:b0:99:6d:25:67:17:83:a8:9e:90:b7:
+        fa:9b:21:ae:00:7c:df:76:cd:e2:3e:48:d2:36:2d:1a:36:fc:
+        50:91:97:8b:6b:f5:93:ed:ca:0d:75:13:51:69:3c:91:cd:92:
+        86:62:40:f9:96:3a:1f:63:e7:2f:7e:41:57:c3:05:65:d9:ef:
+        57:52:44:d3:ca:ed:23:e6:75:ad:5d:6c:cd:84:90:54:63:1e:
+        c0:10:3d:6f:24:7d:43:b9:e7:ed:a2:68:89:f6:7a:0e:76:b0:
+        a6:aa:d0:c2:b9:29:fb:c1:e3:21:52:16:a2:38:a8:36:f7:db:
+        61:f1:9e:e4:5c:16:19:c6:4f:fb:00:19:7f:eb:dd:28:21:b3:
+        05:54:70:68:95:87:61:30:7d:64:a3:2e:cb:28:3f:ac:e1:e4:
+        32:07:96:18:c0:89:d1:21:c5:62:33:5f:ed:68:a8:be:59:ab:
+        11:ae:e4:02:68:91:df:53:7d:5a:45:2b:19:08:08:ed:fe:2b:
+        0f:26:5e:b7:a0:eb:ad:f3:4e:11:13:b9:b9:cc:a8:1e:79:f4:
+        5f:49:cc:3c:7e:66:1b:0b:cf:8c:70:ca:67:c8:d5:18:00:c7:
+        eb:1b:61:4e:0c:f5:8a:14:ea:03:5c:a0:43:8c:89:ea:8b:ad:
+        0c:33:30:7e:78:b1:b4:99:d3:6f:2a:4f:d2:ad:79:8f:2d:48:
+        ce:70:4d:b2:bd:0b:cc:51:66:93:76:e8:f5:13:0e:b3:12:d1:
+        0e:34:42:ec:91:39:cc:e1:d5:c8:1b:59:90:3f:d7:24:42:f8:
+        d5:d5:8f:ff:e6:3c:ed:4c:a4:0d:82:a3:65:41:ec:c7:97:97:
+        3a:8a:2c:17:96:02:e8:47:ab:7e:37:5f:5f:d3:c4:8e:8d:b0:
+        9d:08:a3:58:a2:0a:49:23:18:18:86:43:ec:6f:6d:32:eb:46:
+        b3:8b:c5:90:71:33:e2:14:16:29:eb:e6:57:34:ec:4b:88:06:
+        0b:1e:77:fa:d8:a3:95:3c:09:e0:38:7b:84:26:84:7d:af:c4:
+        9a:1f:bd:0a:c4:8b:d8:bb:ed:ec:c2:9c:02:d4:db:f0:82:dd:
+        35:5d:d3:64:b0:ed:4a:ff
+-----BEGIN CERTIFICATE-----
+MIIE5TCCAs2gAwIBAgICEAAwDQYJKoZIhvcNAQELBQAwgawxCzAJBgNVBAYTAlVT
+MRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEVMBMGA1UEBwwMSW5kaWFuIFRyYWls
+MRkwFwYDVQQKDBBENDIgU3R1ZGlvcywgTExDMS8wLQYDVQQLDCZENDIgU3R1ZGlv
+cywgTExDIENlcnRpZmljYXRlIEF1dGhvcml0eTEhMB8GA1UEAwwYRDQyIFN0dWRp
+b3MsIExMQyBSb290IENBMB4XDTE3MDUyMzAxMjAwNVoXDTI3MDUyMTAxMjAwNVow
+gYsxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEVMBMGA1UE
+BwwMSW5kaWFuIFRyYWlsMRkwFwYDVQQKDBBENDIgU3R1ZGlvcywgTExDMR0wGwYD
+VQQLDBRTb2Z0d2FyZSBEZXZlbG9wbWVudDESMBAGA1UEAwwJbG9jYWxob3N0MIIB
+IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuKLA9bDRy+wENSgHfy4rLTC2
+c7hPackAuOohWvfwbM+O2IH3+iDEoHk/fmGbtWW36H9URee7oEQdNvcPfhEEt2SX
+VHqsxonb1FQxqa2hXAqhry5+362B+q2kq914QCuvJfIz7jqWqnBm5003x0uZRj7W
+ByPomkKHhrqd2/CL6POlAN9TyxTjwqzkJnnvITjBZw6ytrERy8/MN7tSt7a/jiVz
+WnAhp60LyBC4BiSeTgu9iKatT2OI2VNEnJIb5pLmEGIpcYyjR7i9NhZ4pebyLR74
+fywUA/AlOvgL2yQoD5L+GPhnc2YlhqGN62c6cpShhMQweXhTYAZWIDK8qWRjkQID
+AQABozAwLjAJBgNVHRMEAjAAMAsGA1UdDwQEAwIF4DAUBgNVHREEDTALgglsb2Nh
+bGhvc3QwDQYJKoZIhvcNAQELBQADggIBABFoA0SQcYhkLz6FJgWD5+hhynAolHk8
+IbD+2RuY0HCFwnidnZuQb5NId2hT7nKwT+tuhUtBVm6NYNO0eS/q5RBLNG/Mo9X8
+ZOPvnGksyJQjruEsnKk1TWX2X/tFSRfBKoiwmW0lZxeDqJ6Qt/qbIa4AfN92zeI+
+SNI2LRo2/FCRl4tr9ZPtyg11E1FpPJHNkoZiQPmWOh9j5y9+QVfDBWXZ71dSRNPK
+7SPmda1dbM2EkFRjHsAQPW8kfUO55+2iaIn2eg52sKaq0MK5KfvB4yFSFqI4qDb3
+22HxnuRcFhnGT/sAGX/r3SghswVUcGiVh2EwfWSjLssoP6zh5DIHlhjAidEhxWIz
+X+1oqL5ZqxGu5AJokd9TfVpFKxkICO3+Kw8mXreg663zThETubnMqB559F9JzDx+
+ZhsLz4xwymfI1RgAx+sbYU4M9YoU6gNcoEOMieqLrQwzMH54sbSZ028qT9KteY8t
+SM5wTbK9C8xRZpN26PUTDrMS0Q40QuyROczh1cgbWZA/1yRC+NXVj//mPO1MpA2C
+o2VB7MeXlzqKLBeWAuhHq343X1/TxI6NsJ0Io1iiCkkjGBiGQ+xvbTLrRrOLxZBx
+M+IUFinr5lc07EuIBgsed/rYo5U8CeA4e4QmhH2vxJofvQrEi9i77ezCnALU2/CC
+3TVd02Sw7Ur/
+-----END CERTIFICATE-----
