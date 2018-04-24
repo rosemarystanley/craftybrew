@@ -29,6 +29,7 @@ namespace {
 
             if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
                 $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle;
+                $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
             }
 
             return $bundles;

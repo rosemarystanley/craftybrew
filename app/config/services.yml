@@ -8,3 +8,6 @@ services:
         autowire: true
         autoconfigure: true
         public: false
+
+    CraftyBrew\DataFixtures\:
+        resource: '../Resources/fixtures/*'

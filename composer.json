@@ -9,6 +9,9 @@
         "psr-4": { "CraftyBrew\\": "src/CraftyBrew" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
+    "autoload-dev": {
+        "psr-4": { "CraftyBrew\\DataFixtures\\": "app/Resources/fixtures"}
+    },
     "config": {
         "platform": {
             "php": "7.2.4"
@@ -43,6 +46,9 @@
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/console": "^4.0",
         "symfony/symfony": "^3.0.0"
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0"
     },
     "scripts": {
         "post-install-cmd": [
