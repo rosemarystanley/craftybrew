@@ -1,0 +1,3 @@
+craftybrew_web:
+    resource:                           "@WebBundle/Controller/"
+    type:                               annotation
