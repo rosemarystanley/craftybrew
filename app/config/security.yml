@@ -13,6 +13,9 @@ security:
             provider:                   token_provider
             stateless:                  true
             anonymous:                  true
+        main:
+            pattern:                    ^/
+            anonymous:                  true
 
     access_control:
         -
