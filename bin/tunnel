@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+echo -en "Parsing configuration: "
+
+OFS=$IFS
+IFS=
+VAGRANT_SSH_CONFIG=$(vagrant ssh-config);
+VAGRANT_SSH_HOST=$(echo $VAGRANT_SSH_CONFIG | grep " HostName " | awk {'print $2'});
+VAGRANT_SSH_PORT=$(echo $VAGRANT_SSH_CONFIG | grep " Port " | awk {'print $2'});
+VAGRANT_SSH_USER=$(echo $VAGRANT_SSH_CONFIG | grep " User " | awk {'print $2'});
+VAGRANT_SSH_IDENT=$(echo $VAGRANT_SSH_CONFIG | grep " IdentityFile " | awk {'print $2'});
+IFS=$OFS
+
+echo "Done."
+
+echo "Loading SSH tunnel:"
+echo "    Host: ${VAGRANT_SSH_HOST}:${VAGRANT_SSH_PORT}"
+echo "   Ports: 80, 443, 3306"
+echo "    User: ${VAGRANT_SSH_USER}"
+echo ""
+
+sudo ls >/dev/null 2>&1
+
+echo -en "<Control-C to Exit> "
+
+sudo ssh -q \
+    -y \
+    -N \
+    -L 80:${VAGRANT_SSH_HOST}:80 \
+    -L 443:${VAGRANT_SSH_HOST}:443 \
+    -L 3306:${VAGRANT_SSH_HOST}:3306 \
+    -p ${VAGRANT_SSH_PORT} \
+    -i ${VAGRANT_SSH_IDENT} \
+    ${VAGRANT_SSH_USER}@${VAGRANT_SSH_HOST}
+
+echo -en "\nTunnel disconnected: Have a nice day!\n"
