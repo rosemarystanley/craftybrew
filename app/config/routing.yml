@@ -1,0 +1,6 @@
+CraftyBrewBundle:
+    resource:                           "@WebBundle/Resources/config/routing.yml"
+    prefix:                             /
+    schemes:                            [ https ]
+    options:
+        utf8:                           true

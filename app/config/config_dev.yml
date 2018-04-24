@@ -1,0 +1,14 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    router:
+        resource:                       '%kernel.root_dir%/config/routing_dev.yml'
+    trusted_hosts:                      [ 'localhost' ]
+    profiler:                           { only_exceptions: false }
+
+nelmio_cors:
+    paths:
+        '^/':
+            allow_origin:               [ '^https?://localhost(:\d+)?' ]
+            expose_headers:             [ 'Content-Length', 'WWW-Authenticate', 'Last-Modified' ]

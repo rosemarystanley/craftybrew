@@ -1,0 +1,23 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    providers:
+        token_provider:
+            entity:
+                class:                  WebBundle:User
+                property:               apiKey
+
+    firewalls:
+        api:
+            pattern:                    ^/api
+            provider:                   token_provider
+            stateless:                  true
+            anonymous:                  true
+
+    access_control:
+        -
+            path:                       ^/
+            roles:                      IS_AUTHENTICATED_ANONYMOUSLY
+        -
+            path:                       ^/api
+            roles:                      ROLE_API

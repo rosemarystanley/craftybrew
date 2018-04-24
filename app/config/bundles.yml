@@ -1,0 +1,25 @@
+# Configuration for bundle-specific stuff
+
+nelmio_cors:
+    defaults:
+        allow_credentials:              false
+    paths:
+        '^/api':
+            allow_credentials:          true
+            origin_regex:               true
+            allow_origin:               [ '^https://(www\.)?craftybrew\.com(:\d+)?' ]
+            allow_headers:              [ 'Origin', 'Accept', 'Content-Type', 'Authorization', 'X-Requested-With', 'If-Modified-Since', 'Cache-Control' ]
+            allow_methods:              [ 'GET', 'POST', 'PUT', 'DELETE', 'OPTIONS' ]
+            expose_headers:             [ 'Content-Length', 'WWW-Authenticate', 'Last-Modified', 'Cache-Control' ]
+            max_age:                    3600
+
+fos_rest:
+    disable_csrf_role:                  ROLE_API
+    format_listener:
+        rules:
+            -
+                path:                   ^/api
+                priorities:             [ 'json' ]
+                fallback_format:        json
+                prefer_extension:       false
+    serializer:                         { serialize_null: true }
