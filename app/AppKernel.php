@@ -25,6 +25,7 @@ namespace {
                 new FOS\RestBundle\FOSRestBundle,
                 new Nelmio\CorsBundle\NelmioCorsBundle,
                 new CraftyBrew\WebBundle\WebBundle,
+                new JMS\SerializerBundle\JMSSerializerBundle,
             ];
 
             if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
