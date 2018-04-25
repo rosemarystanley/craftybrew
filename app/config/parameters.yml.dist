@@ -12,5 +12,8 @@ parameters:
     database_charset:                   utf8mb4
     database_collate:                   utf8mb4_unicode_ci
 
+    # The mapbox access token
+    mapbox_access_token:                ~
+
     # A secret key that's used to generate certain security-related tokens
     secret:                             ThisTokenIsNotSoSecretChangeIt

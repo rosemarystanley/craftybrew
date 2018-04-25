@@ -21,6 +21,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render(
+            'default/index.html.twig',
+            [
+                'mapbox_access_token' => $this->getParameter('mapbox_access_token')
+            ]
+        );
     }
 }
