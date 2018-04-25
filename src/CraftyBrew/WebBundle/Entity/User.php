@@ -92,7 +92,7 @@ class User implements UserInterface
      *
      * @return string[] The user roles
      */
-    public function getRoles()
+    public function getRoles(): array
     {
         if ($this->apiKey) {
             return ['ROLE_API_USER'];
@@ -108,7 +108,7 @@ class User implements UserInterface
      *
      * @return string|null The salt
      */
-    public function getSalt()
+    public function getSalt(): ?string
     {
     }
 
@@ -123,9 +123,9 @@ class User implements UserInterface
     /**
      * @param null|string $apiKey
      *
-     * @return User
+     * @return $this
      */
-    public function setApiKey(?string $apiKey): User
+    public function setApiKey(?string $apiKey): self
     {
         $this->apiKey = $apiKey;
 
@@ -135,9 +135,9 @@ class User implements UserInterface
     /**
      * @param int|null $id
      *
-     * @return User
+     * @return $this
      */
-    public function setId(?int $id): User
+    public function setId(?int $id): self
     {
         $this->id = $id;
 
@@ -147,9 +147,9 @@ class User implements UserInterface
     /**
      * @param null|string $password
      *
-     * @return User
+     * @return $this
      */
-    public function setPassword(?string $password): User
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
@@ -159,9 +159,9 @@ class User implements UserInterface
     /**
      * @param string $username
      *
-     * @return User
+     * @return $this
      */
-    public function setUsername(string $username): User
+    public function setUsername(string $username): self
     {
         $this->username = $username;
 

@@ -102,7 +102,7 @@ class Brewery extends AbstractEntity
      *
      * @return Brewery
      */
-    public function addUrl(Brewery\Url $url)
+    public function addUrl(Brewery\Url $url): Brewery
     {
         if (!$this->hasUrl($url)) {
             $this->urls->add($url);
@@ -115,7 +115,7 @@ class Brewery extends AbstractEntity
     /**
      * @return string
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
@@ -123,7 +123,7 @@ class Brewery extends AbstractEntity
     /**
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
@@ -133,7 +133,7 @@ class Brewery extends AbstractEntity
      *
      * @return Brewery\Url|null
      */
-    public function getFacebookUrl()
+    public function getFacebookUrl(): ?Brewery\Url
     {
         return $this->getUrlType(Brewery\Url::TYPE_FACEBOOK);
     }
@@ -141,7 +141,7 @@ class Brewery extends AbstractEntity
     /**
      * @return integer
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -149,7 +149,7 @@ class Brewery extends AbstractEntity
     /**
      * @return float
      */
-    public function getLatitude()
+    public function getLatitude(): float
     {
         return $this->latitude;
     }
@@ -157,7 +157,7 @@ class Brewery extends AbstractEntity
     /**
      * @return float
      */
-    public function getLongitude()
+    public function getLongitude(): float
     {
         return $this->longitude;
     }
@@ -165,7 +165,7 @@ class Brewery extends AbstractEntity
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -173,7 +173,7 @@ class Brewery extends AbstractEntity
     /**
      * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
@@ -181,7 +181,7 @@ class Brewery extends AbstractEntity
     /**
      * @return string
      */
-    public function getPostal()
+    public function getPostal(): string
     {
         return $this->postal;
     }
@@ -189,7 +189,7 @@ class Brewery extends AbstractEntity
     /**
      * @return Brewery\Url[]|Collection
      */
-    public function getUrls()
+    public function getUrls(): Collection
     {
         return $this->urls;
     }
@@ -199,7 +199,7 @@ class Brewery extends AbstractEntity
      *
      * @return Brewery\Url|null
      */
-    public function getInstagramUrl()
+    public function getInstagramUrl(): ?Brewery\Url
     {
         return $this->getUrlType(Brewery\Url::TYPE_INSTAGRAM);
     }
@@ -209,7 +209,7 @@ class Brewery extends AbstractEntity
      *
      * @return Brewery\Url|null
      */
-    public function getTwitterUrl()
+    public function getTwitterUrl(): ?Brewery\Url
     {
         return $this->getUrlType(Brewery\Url::TYPE_TWITTER);
     }
@@ -219,7 +219,7 @@ class Brewery extends AbstractEntity
      *
      * @return Brewery\Url|null
      */
-    public function getWebsiteUrl()
+    public function getWebsiteUrl(): ?Brewery\Url
     {
         return $this->getUrlType(Brewery\Url::TYPE_WEBSITE);
     }
@@ -229,7 +229,7 @@ class Brewery extends AbstractEntity
      *
      * @return bool
      */
-    public function hasFacebookUrl()
+    public function hasFacebookUrl(): bool
     {
         return $this->hasUrlType(Brewery\Url::TYPE_FACEBOOK);
     }
@@ -239,7 +239,7 @@ class Brewery extends AbstractEntity
      *
      * @return bool
      */
-    public function hasInstagramUrl()
+    public function hasInstagramUrl(): bool
     {
         return $this->hasUrlType(Brewery\Url::TYPE_INSTAGRAM);
     }
@@ -249,7 +249,7 @@ class Brewery extends AbstractEntity
      *
      * @return bool
      */
-    public function hasTwitterUrl()
+    public function hasTwitterUrl(): bool
     {
         return $this->hasUrlType(Brewery\Url::TYPE_TWITTER);
     }
@@ -259,7 +259,7 @@ class Brewery extends AbstractEntity
      *
      * @return bool
      */
-    public function hasWebsiteUrl()
+    public function hasWebsiteUrl(): bool
     {
         return $this->hasUrlType(Brewery\Url::TYPE_WEBSITE);
     }
@@ -271,7 +271,7 @@ class Brewery extends AbstractEntity
      *
      * @return bool
      */
-    public function hasUrl(Brewery\Url $url)
+    public function hasUrl(Brewery\Url $url): bool
     {
         return $this->urls->exists(function($idx, Brewery\Url $_url) use ($url) {
             return strcasecmp($url->getType(), $_url->getType()) === 0
@@ -286,7 +286,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function removeUrl(Brewery\Url $url)
+    public function removeUrl(Brewery\Url $url): self
     {
         if ($this->hasUrl($url)) {
             $this->urls->removeElement($url);
@@ -301,7 +301,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(string $address): self
     {
         $this->address = $address;
 
@@ -313,7 +313,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setCity($city)
+    public function setCity(string $city): self
     {
         $this->city = $city;
 
@@ -325,7 +325,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setLatitude($latitude)
+    public function setLatitude(float $latitude): self
     {
         $this->latitude = $latitude;
 
@@ -337,7 +337,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setLongitude($longitude)
+    public function setLongitude(float $longitude): self
     {
         $this->longitude = $longitude;
 
@@ -349,7 +349,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -361,7 +361,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setState($state)
+    public function setState(string $state): self
     {
         $this->state = $state;
 
@@ -373,7 +373,7 @@ class Brewery extends AbstractEntity
      *
      * @return $this
      */
-    public function setPostal($postal)
+    public function setPostal(string $postal): self
     {
         $this->postal = $postal;
 
@@ -387,7 +387,7 @@ class Brewery extends AbstractEntity
      *
      * @return Brewery\Url|null
      */
-    protected function getUrlType($type)
+    protected function getUrlType(string $type): ?Brewery\Url
     {
         return $this->hasUrlType($type)
             ? $this->getUrls()
@@ -405,7 +405,7 @@ class Brewery extends AbstractEntity
      *
      * @return bool
      */
-    protected function hasUrlType($type)
+    protected function hasUrlType(string $type): bool
     {
         return $this->getUrls()
             ->exists(function ($idx, Brewery\Url $url) use ($type) {

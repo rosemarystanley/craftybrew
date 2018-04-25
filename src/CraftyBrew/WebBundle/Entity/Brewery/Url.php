@@ -60,7 +60,7 @@ class Url extends AbstractEntity
     /**
      * @return Brewery
      */
-    public function getBrewery()
+    public function getBrewery(): Brewery
     {
         return $this->brewery;
     }
@@ -68,7 +68,7 @@ class Url extends AbstractEntity
     /**
      * @return integer
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -76,7 +76,7 @@ class Url extends AbstractEntity
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -84,7 +84,7 @@ class Url extends AbstractEntity
     /**
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -94,7 +94,7 @@ class Url extends AbstractEntity
      *
      * @return bool
      */
-    public function isFacebook()
+    public function isFacebook(): bool
     {
         return $this->type === $this::TYPE_FACEBOOK;
     }
@@ -104,7 +104,7 @@ class Url extends AbstractEntity
      *
      * @return bool
      */
-    public function isInstagram()
+    public function isInstagram(): bool
     {
         return $this->type === $this::TYPE_INSTAGRAM;
     }
@@ -114,7 +114,7 @@ class Url extends AbstractEntity
      *
      * @return bool
      */
-    public function isTwitter()
+    public function isTwitter(): bool
     {
         return $this->type === $this::TYPE_TWITTER;
     }
@@ -124,7 +124,7 @@ class Url extends AbstractEntity
      *
      * @return bool
      */
-    public function isWebsite()
+    public function isWebsite(): bool
     {
         return $this->type === $this::TYPE_WEBSITE;
     }
@@ -134,7 +134,7 @@ class Url extends AbstractEntity
      *
      * @return $this
      */
-    public function setBrewery(Brewery $brewery = null)
+    public function setBrewery(Brewery $brewery = null): self
     {
         $this->brewery = $brewery;
 
@@ -146,7 +146,7 @@ class Url extends AbstractEntity
      *
      * @return $this
      */
-    public function setId($id)
+    public function setId(int $id): self
     {
         $this->id = $id;
 
@@ -158,7 +158,7 @@ class Url extends AbstractEntity
      *
      * @return $this
      */
-    public function setType($type)
+    public function setType(string $type): self
     {
         $this->type = $type;
 
@@ -170,7 +170,7 @@ class Url extends AbstractEntity
      *
      * @return $this
      */
-    public function setUrl($url)
+    public function setUrl(string $url): self
     {
         $this->url = $url;
 
