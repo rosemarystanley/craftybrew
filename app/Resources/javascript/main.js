@@ -25,10 +25,6 @@ fetch('/api/breweries')
         .getElementsByTagName('ul')[0];
 
     breweries.forEach(function (brewery) {
-      const marker = L
-        .marker([brewery.latitude, brewery.longitude])
-        .addTo(map);
-
       const h5 = document.createElement('h5');
             h5.appendChild(document.createTextNode(brewery.name));
 
@@ -54,6 +50,13 @@ fetch('/api/breweries')
             listItem.className = 'list-group-item';
 
       mapList.appendChild(listItem);
+
+      const marker = L
+        .marker([brewery.latitude, brewery.longitude], {
+          title: h5.innerText,
+          alt: h5.innerText
+        })
+        .addTo(map);
 
       // TODO Templating
       marker.bindPopup(
