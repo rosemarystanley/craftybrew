@@ -1,0 +1,25 @@
+{
+  "name": "craftybrew",
+  "version": "0.0.1",
+  "description": "A simple map plotting local breweries in and around Charlotte, NC",
+  "dependencies": {
+    "es6-promise": "^4.2.4",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dohpaz42/craftybrew.git"
+  },
+  "author": "Ken Stanley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dohpaz42/craftybrew/issues"
+  },
+  "homepage": "https://github.com/dohpaz42/craftybrew#readme",
+  "private": true
+}
