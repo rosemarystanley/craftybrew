@@ -1,4 +1,12 @@
-#map
-    height: 75vh
-    background-color: lighten($shadow-color, 80%)
-    @include border-radius(15px)
+div#map-view
+    > #map
+        height: 75vh
+        background-color: lighten($shadow-color, 80%)
+        @include border-radius(15px)
+
+div#map-list
+    > ul
+        height: 75vh
+        overflow: hidden
+        overflow-y: scroll
+
