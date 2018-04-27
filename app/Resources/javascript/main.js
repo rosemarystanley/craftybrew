@@ -58,6 +58,14 @@ fetch('/api/breweries')
         })
         .addTo(map);
 
+      marker.on('click', function (mapList, listItem) {
+        mapList.childNodes.forEach(function (childNode) {
+          childNode.classList.remove('active')
+        });
+
+        listItem.classList.add('active');
+      }.bind(null, mapList, listItem));
+
       // TODO Templating
       marker.bindPopup(
         h5.outerHTML +
