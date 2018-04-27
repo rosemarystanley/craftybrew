@@ -37,5 +37,10 @@ module.exports = merge(baseConfig, {
         }
       }]
     }]
+  },
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 800,
+    poll: 500
   }
 });
