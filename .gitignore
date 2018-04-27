@@ -6,3 +6,5 @@ vendor
 /var/logs/*
 /app/config/parameters.yml
 /app/Resources/javascript/node_modules/*
+web/c/*
+web/j/*
