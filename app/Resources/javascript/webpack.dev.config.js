@@ -1,6 +1,41 @@
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.config.js');
+const baseConfig = require('./webpack.base.config.js');
+
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(baseConfig, {
-
+  mode: 'development',
+  optimization: {
+    minimize: false
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '../c/[name].css'
+    })
+  ],
+  module: {
+    rules: [{
+      test: /\.sass$/,
+      use: [{
+        loader: MiniCssExtractPlugin.loader
+      }, {
+        loader: "css-loader",
+        options: {
+          sourceMap: true
+        }
+      }, {
+        loader: "sass-loader",
+        options: {
+          includePaths: ["../sass"],
+          indentedSyntax: true,
+          indentWidth: 4,
+          outputStyle: 'expanded',
+          sourceComments: true,
+          sourceMap: true,
+          outFile: path.resolve(__dirname, '../../../web/c')
+        }
+      }]
+    }]
+  }
 });
