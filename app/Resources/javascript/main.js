@@ -68,10 +68,11 @@ fetch('/api/breweries')
       }.bind(null, mapList, listItem));
 
       // TODO Templating
-      marker.bindPopup(
-        h5.outerHTML +
-        dl.outerHTML
-      );
+      const popup = L.popup();
+            popup.setLatLng(marker.getLatLng());
+            popup.setContent(h5.outerHTML + dl.outerHTML);
+
+      marker.bindPopup(popup);
     });
 
   })
