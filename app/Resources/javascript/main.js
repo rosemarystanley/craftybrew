@@ -73,6 +73,21 @@ fetch('/api/breweries')
             popup.setContent(h5.outerHTML + dl.outerHTML);
 
       marker.bindPopup(popup);
+
+      listItem.addEventListener('click', function (mapList, listItem, popup) {
+        if (!listItem.classList.contains('active')) {
+          mapList.childNodes.forEach(function (childNode) {
+            childNode.classList.remove('active')
+          });
+
+          listItem.classList.add('active');
+
+          scrollTo(mapList, listItem.offsetTop, 1250);
+          map.closePopup();
+          map.panTo(popup.getLatLng(), {animate: true});
+          map.openPopup(popup);
+        }
+      }.bind(null, mapList, listItem, popup), {passive: true});
     });
 
   })
