@@ -28,4 +28,30 @@ class DefaultController extends Controller
             ]
         );
     }
+
+    /**
+     * @Route(
+     *     "/terms-of-service",
+     *     name="web.default.terms"
+     * )
+     *
+     * @return string
+     */
+    public function termsAction()
+    {
+        return $this->render('default/terms.html.twig');
+    }
+
+    /**
+     * @Route(
+     *     "/privacy-policy",
+     *     name="web.default.privacy"
+     * )
+     *
+     * @return string
+     */
+    public function privacyAction()
+    {
+        return $this->render('default/privacy.html.twig');
+    }
 }

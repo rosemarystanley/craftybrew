@@ -63,7 +63,25 @@
             </div>
             <div class="row text-left pl-5">
                 <div class="col-md">
-                    <small>Copyright {{ 'now' | date('Y') }} Ken Stanley. All rights reserved.</small>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <small>
+                                Copyright {{ 'now' | date('Y') }} Ken Stanley. All rights reserved.
+                            </small>
+                        </li>
+                        <li class="list-inline-item">
+                            <small>
+                                <a href="{{ path('web.default.terms') }}" title="Terms of Service">
+                                    Terms of Service</a>
+                            </small>
+                        </li>
+                        <li class="list-inline-item">
+                            <small>
+                                <a href="{{ path('web.default.privacy') }}" title="Privacy Policy">
+                                    Privacy Policy</a>
+                            </small>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </footer>
