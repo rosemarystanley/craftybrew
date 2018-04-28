@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", DOCUMENT_ROOT,
     id: "vagrant",
     type: "nfs",
-    mount_options: ['rw', 'vers=3', 'fsc', 'rsize=1048576', 'wsize=1048576']
+    mount_options: ['rw', 'vers=3', 'fsc', 'rsize=1048576', 'wsize=1048576', 'actimeo=2']
 
   config.vm.provision :shell,
    path: "bin/vagrant",
