@@ -58,6 +58,12 @@ class DefaultController extends Controller
      */
     public function privacyAction()
     {
-        return $this->render('default/privacy.html.twig');
+        return $this->render(
+            'default/privacy.html.twig',
+            [
+                'last_updated' => '2018-04-28 00:00:00-0500',
+                'site_name' => 'CraftyBrew'
+            ]
+        );
     }
 }
