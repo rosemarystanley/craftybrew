@@ -21,14 +21,34 @@
 </head>
 <body>
 <div class="container-fluid">
-    <header class="row">
-        <div class="col-sm">
-            <div>
-                <a class="logo" href="{{ path('web.default.index') }}">CraftyBrew</a>
+    <header>
+        <div class="row">
+            <div class="col-sm">
+                <div>
+                    <a class="logo" href="{{ path('web.default.index') }}">CraftyBrew</a>
+                </div>
+            </div>
+            <div class="col-md d-none d-md-block text-right">
+                <aside>Local breweries around Charlotte, NC</aside>
             </div>
         </div>
-        <div class="col-md d-none d-md-block text-right">
-            <aside>Local breweries around Charlotte, NC</aside>
+        <div class="row">
+            <div class="col-md">
+                <nav class="navbar navbar-expand-lg">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a href="{{ path('web.default.about') }}" title="About CraftyBrew" class="nav-link" aria-label="About CraftyBrew">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('web.default.contact') }}" title="Contact CraftyBrew" class="nav-link" aria-label="Contact CraftyBrew">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Search</button>
+                    </form>
+                </nav>
+            </div>
         </div>
     </header>
 

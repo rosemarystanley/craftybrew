@@ -7,32 +7,34 @@ body
     font-size: 1.1em
 
     header
-        background-color: lighten($shadow-color, 15%)
+        div.row
+            &:first-child
+                background-color: lighten($shadow-color, 15%)
 
-        & > div
-            padding-left: 0 !important
-            padding-right: 0 !important
-            max-height: 2.5rem
-            background-color: $primary-color
-            margin: 2rem 0
+            &:first-child > div
+                padding-left: 0 !important
+                padding-right: 0 !important
+                max-height: 2.5rem
+                background-color: $primary-color
+                margin: 2rem 0
 
-            div, aside
-                padding: 0 1rem
+                div, aside
+                    padding: 0 1rem
 
-            div
-                > .logo
-                    position: relative
-                    top: -1.75rem
+                div
+                    > .logo
+                        position: relative
+                        top: -1.75rem
+                        color: $highlight-color
+                        font-family: Norican, cursive
+                        font-size: 4rem
+                        text-decoration: none
+                        @include text-shadow(5px, 5px, 0, $shadow-color)
+
+                aside
+                    font-style: italic
                     color: $highlight-color
-                    font-family: Norican, cursive
-                    font-size: 4rem
-                    text-decoration: none
-                    @include text-shadow(5px, 5px, 0, $shadow-color)
-
-            aside
-                font-style: italic
-                color: $highlight-color
-                padding-top: .5rem
+                    padding-top: .5rem
 
     footer
         background-color: $primary-color
