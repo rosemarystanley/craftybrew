@@ -118,6 +118,14 @@ class Brewery extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getBreweryDBId(): string
+    {
+        return $this->brewerydbId;
+    }
+
+    /**
      * @return null|string
      */
     public function getDescription(): ?string

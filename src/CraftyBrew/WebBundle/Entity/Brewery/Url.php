@@ -85,6 +85,14 @@ class Url extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getBreweryDBId(): string
+    {
+        return $this->brewerydbId;
+    }
+
+    /**
      * @return integer
      */
     public function getId(): int
