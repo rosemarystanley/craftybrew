@@ -12,6 +12,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    use EntityDateTrackingTrait;
+
     /**
      * @ORM\Column(name="api_key", type="string", length=128, unique=true, nullable=true)
      *
@@ -41,6 +43,14 @@ class User implements UserInterface
      * @var string
      */
     private $username;
+
+    /**
+     * Initialize the User object.
+     */
+    public function __construct()
+    {
+        $this->dateCreated = new \DateTimeImmutable;
+    }
 
     /**
      * Removes sensitive data from the user.

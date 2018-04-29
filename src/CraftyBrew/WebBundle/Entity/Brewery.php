@@ -15,6 +15,8 @@ use JMS\Serializer\Annotation;
  */
 class Brewery extends AbstractEntity
 {
+    use EntityDateTrackingTrait;
+
     /**
      * @ORM\Column(name="address", type="string", length=255)
      * @Annotation\Groups({"list"})
@@ -95,6 +97,7 @@ class Brewery extends AbstractEntity
     public function __construct()
     {
         $this->urls = new ArrayCollection;
+        $this->dateCreated = new \DateTimeImmutable;
     }
 
     /**

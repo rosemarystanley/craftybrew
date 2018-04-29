@@ -6,6 +6,7 @@ namespace CraftyBrew\WebBundle\Entity\Brewery;
 
 use CraftyBrew\WebBundle\Entity\AbstractEntity;
 use CraftyBrew\WebBundle\Entity\Brewery;
+use CraftyBrew\WebBundle\Entity\EntityDateTrackingTrait;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation;
 
@@ -18,6 +19,8 @@ use JMS\Serializer\Annotation;
  */
 class Url extends AbstractEntity
 {
+    use EntityDateTrackingTrait;
+
     const TYPE_FACEBOOK     = 'facebook';
     const TYPE_INSTAGRAM    = 'instagram';
     const TYPE_MAILING_LIST = 'mailing-list';
@@ -57,6 +60,14 @@ class Url extends AbstractEntity
      * @var string
      */
     private $url;
+
+    /**
+     * Initialize the Brewery object.
+     */
+    public function __construct()
+    {
+        $this->dateCreated = new \DateTimeImmutable;
+    }
 
     /**
      * @return Brewery
