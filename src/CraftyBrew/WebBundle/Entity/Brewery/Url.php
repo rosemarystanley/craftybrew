@@ -20,6 +20,7 @@ class Url extends AbstractEntity
 {
     const TYPE_FACEBOOK     = 'facebook';
     const TYPE_INSTAGRAM    = 'instagram';
+    const TYPE_MAILING_LIST = 'mailing-list';
     const TYPE_TWITTER      = 'twitter';
     const TYPE_WEBSITE      = 'website';
 
@@ -107,6 +108,16 @@ class Url extends AbstractEntity
     public function isInstagram(): bool
     {
         return $this->type === $this::TYPE_INSTAGRAM;
+    }
+
+    /**
+     * Return true/false if the Url type is for a mailing list.
+     *
+     * @return bool
+     */
+    public function isMailingList(): bool
+    {
+        return $this->type === $this::TYPE_MAILING_LIST;
     }
 
     /**

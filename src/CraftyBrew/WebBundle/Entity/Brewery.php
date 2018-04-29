@@ -205,6 +205,16 @@ class Brewery extends AbstractEntity
     }
 
     /**
+     * Return the Brewery\Url object for the mailing list type.
+     *
+     * @return Brewery\Url|null
+     */
+    public function getMailingListUrl(): ?Brewery\Url
+    {
+        return $this->getUrlType(Brewery\Url::TYPE_MAILING_LIST);
+    }
+
+    /**
      * Return the Brewery\Url object for the Twitter type.
      *
      * @return Brewery\Url|null
