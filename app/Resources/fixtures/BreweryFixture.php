@@ -5,21 +5,10 @@ declare(strict_types=1);
 namespace CraftyBrew\DataFixtures;
 
 use CraftyBrew\WebBundle\Entity\Brewery;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class BreweryFixture extends Fixture
+class BreweryFixture extends AbstractFixture
 {
-    const CSV           = __DIR__ . '/../breweries.csv';
-
-    const CSV_NAME      = 0;
-    const CSV_ADDRESS   = 1;
-    const CSV_CITY      = 2;
-    const CSV_STATE     = 3;
-    const CSV_POSTAL    = 4;
-    const CSV_LATITUDE  = 5;
-    const CSV_LONGITUDE = 6;
-
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -27,34 +16,62 @@ class BreweryFixture extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $fhandle = fopen($this::CSV, 'r', false);
+        $iterator = $this->getDirectoryIterator(__DIR__ . '/../seeds', '/\.json$/i');
 
-        if (!is_resource($fhandle)) {
-            throw new \UnexpectedValueException(sprintf('Unable to open %s for reading', $this::CSV));
+        /** @var \SplFileInfo $fileInfo */
+        foreach ($iterator as $fileInfo) {
+            $breweries = $this->parse($fileInfo->getRealPath());
+
+            /** @var Brewery $brewery */
+            foreach ($breweries as $brewery) {
+                if (!$this->hasReference($brewery->getBreweryDBId())) {
+                    $this->setReference($brewery->getBreweryDBId(), $brewery);
+                    $manager->persist($brewery);
+                }
+            }
         }
 
-        // Remove the headers
-        fgetcsv($fhandle);
-
-        while (($row = fgetcsv($fhandle)) !== false) {
-            $brewery = new Brewery;
-            $brewery
-                ->setAddress(trim($row[$this::CSV_ADDRESS]))
-                ->setCity(trim($row[$this::CSV_CITY]))
-                ->setLatitude(number_format((float)trim($row[$this::CSV_LATITUDE]), 6))
-                ->setLongitude(number_format((float)trim($row[$this::CSV_LONGITUDE]), 6))
-                ->setName(trim($row[$this::CSV_NAME]))
-                ->setPostal(trim($row[$this::CSV_POSTAL]))
-                ->setState(trim($row[$this::CSV_STATE]));
-
-            $manager->persist($brewery);
-
-            $this->setReference($brewery->getName(), $brewery);
-
-            unset($brewery, $row);
-        }
-
-        fclose($fhandle);
         $manager->flush();
+    }
+
+    /**
+     * Parse the JSON file and return an array of Brewery objects.
+     *
+     * @param string $file
+     *
+     * @return Brewery[]
+     */
+    protected function parse(string $file): array
+    {
+        if (!is_readable($file)) {
+            throw new \DomainException(sprintf('Unable to read the file %s', $file));
+        }
+
+        $data = json_decode(file_get_contents($file));
+
+        $breweries = [];
+
+        foreach ($data->data as $location) {
+            $brewery = (array)$location->brewery ?: [];
+
+            $description = array_key_exists('description', $brewery)
+                ? $brewery['description']
+                : null;
+            $established = array_key_exists('established', $brewery)
+                ? (int)$brewery['established']
+                : null;
+            $organic = array_key_exists('isOrganic', $brewery)
+                ? strcasecmp($brewery['isOrganic'], 'N') !== 0
+                : false;
+
+            $breweries[] = (new Brewery)
+                ->isOrganic($organic)
+                ->setBreweryDBId($brewery['id'])
+                ->setDescription($description)
+                ->setEstablished($established)
+                ->setName($brewery['name']);
+        }
+
+        return $breweries;
     }
 }
