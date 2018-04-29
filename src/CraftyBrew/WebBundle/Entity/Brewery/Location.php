@@ -20,7 +20,7 @@ class Location extends AbstractEntity
     use EntityDateTrackingTrait;
 
     /**
-     * @ORM\Column(name="address", type="string", length=255)
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
      *
      * @var string
      */
@@ -107,7 +107,7 @@ class Location extends AbstractEntity
     private $phone;
 
     /**
-     * @ORM\Column(name="postal", type="string", length=10)
+     * @ORM\Column(name="postal", type="string", length=10, nullable=true)
      *
      * @var string
      */
@@ -272,11 +272,11 @@ class Location extends AbstractEntity
     }
 
     /**
-     * @param string $address
+     * @param string|null $address
      *
      * @return $this
      */
-    public function setAddress(string $address): self
+    public function setAddress(?string $address = null): self
     {
         $this->address = $address;
 
@@ -284,11 +284,11 @@ class Location extends AbstractEntity
     }
 
     /**
-     * @param null|string $addressExtended
+     * @param string|null $addressExtended
      *
      * @return $this
      */
-    public function setAddressExtended(?string $addressExtended): self
+    public function setAddressExtended(?string $addressExtended = null): self
     {
         $this->addressExtended = $addressExtended;
 
@@ -344,11 +344,11 @@ class Location extends AbstractEntity
     }
 
     /**
-     * @param string $hours
+     * @param string|null $hours
      *
      * @return $this
      */
-    public function setHours(string $hours): self
+    public function setHours(?string $hours = null): self
     {
         $this->hours = $hours;
 
@@ -392,11 +392,11 @@ class Location extends AbstractEntity
     }
 
     /**
-     * @param int $opened
+     * @param int|null $opened
      *
      * @return $this
      */
-    public function setOpened(int $opened): self
+    public function setOpened(?int $opened = null): self
     {
         $this->opened = $opened;
 
@@ -404,11 +404,11 @@ class Location extends AbstractEntity
     }
 
     /**
-     * @param null|string $phone
+     * @param string|null $phone
      *
      * @return $this
      */
-    public function setPhone(?string $phone): self
+    public function setPhone(?string $phone = null): self
     {
         $this->phone = $phone;
 
@@ -416,11 +416,11 @@ class Location extends AbstractEntity
     }
 
     /**
-     * @param string $postal
+     * @param string|null $postal
      *
      * @return $this
      */
-    public function setPostal(string $postal): self
+    public function setPostal(?string $postal = null): self
     {
         $this->postal = $postal;
 
