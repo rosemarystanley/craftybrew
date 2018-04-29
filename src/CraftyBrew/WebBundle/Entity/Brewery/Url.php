@@ -29,7 +29,7 @@ class Url extends AbstractEntity
 
     /**
      * @ORM\ManyToOne(targetEntity="CraftyBrew\WebBundle\Entity\Brewery", inversedBy="urls")
-     * @ORM\JoinColumn(name="brewery_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="brewery_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      *
      * @var Brewery
      */
@@ -167,11 +167,11 @@ class Url extends AbstractEntity
     }
 
     /**
-     * @param Brewery|null $brewery
+     * @param Brewery $brewery
      *
      * @return $this
      */
-    public function setBrewery(Brewery $brewery = null): self
+    public function setBrewery(Brewery $brewery): self
     {
         $this->brewery = $brewery;
 

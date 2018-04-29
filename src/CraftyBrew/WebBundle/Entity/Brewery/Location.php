@@ -35,7 +35,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\ManyToOne(targetEntity="CraftyBrew\WebBundle\Entity\Brewery", inversedBy="locations")
-     * @ORM\JoinColumn(name="brewery_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="brewery_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      *
      * @var Brewery
      */
