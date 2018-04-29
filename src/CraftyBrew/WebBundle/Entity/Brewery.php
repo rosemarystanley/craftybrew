@@ -68,7 +68,7 @@ class Brewery extends AbstractEntity
      *
      * @var bool
      */
-    private $organic;
+    private $organic = false;
 
     /**
      * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Url", mappedBy="brewery", cascade={"persist"})
