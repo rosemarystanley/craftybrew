@@ -335,6 +335,42 @@ class Brewery extends AbstractEntity
     }
 
     /**
+     * @param string $brewerydbId
+     *
+     * @return $this
+     */
+    public function setBreweryDBId(string $brewerydbId): self
+    {
+        $this->brewerydbId = $brewerydbId;
+
+        return $this;
+    }
+
+    /**
+     * @param string|null $description
+     *
+     * @return $this
+     */
+    public function setDescription(?string $description = null): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @param int|null $established
+     *
+     * @return $this
+     */
+    public function setEstablished(?int $established = null): self
+    {
+        $this->established = $established;
+
+        return $this;
+    }
+
+    /**
      * @param string $name
      *
      * @return $this
