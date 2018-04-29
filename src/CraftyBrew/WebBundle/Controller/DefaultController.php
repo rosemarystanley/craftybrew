@@ -13,6 +13,19 @@ class DefaultController extends Controller
 {
     /**
      * @Route(
+     *     "/about",
+     *     name="web.default.about"
+     * )
+     *
+     * @return string
+     */
+    public function aboutAction()
+    {
+        return $this->render('default/about.html.twig');
+    }
+
+    /**
+     * @Route(
      *     "/",
      *     name="web.default.index"
      * )
