@@ -43,7 +43,7 @@ class Brewery extends AbstractEntity
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Url", mappedBy="brewery", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Url", mappedBy="brewery", cascade={"persist"})
      * @Annotation\Groups({"list"})
      *
      * @var Brewery\Url[]|Collection
