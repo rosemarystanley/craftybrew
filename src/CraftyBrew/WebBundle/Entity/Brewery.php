@@ -18,22 +18,6 @@ class Brewery extends AbstractEntity
     use EntityDateTrackingTrait;
 
     /**
-     * @ORM\Column(name="address", type="string", length=255)
-     * @Annotation\Groups({"list"})
-     *
-     * @var string
-     */
-    private $address;
-
-    /**
-     * @ORM\Column(name="city", type="string", length=100)
-     * @Annotation\Groups({"list"})
-     *
-     * @var string
-     */
-    private $city;
-
-    /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
@@ -44,20 +28,11 @@ class Brewery extends AbstractEntity
     private $id;
 
     /**
-     * @ORM\Column(name="latitude", type="decimal", scale=6, precision=8)
-     * @Annotation\Groups({"list"})
+     * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Location", mappedBy="brewery", cascade={"persist"})
      *
-     * @var float
+     * @var Brewery\Location[]|Collection
      */
-    private $latitude;
-
-    /**
-     * @ORM\Column(name="longitude", type="decimal", scale=6, precision=8)
-     * @Annotation\Groups({"list"})
-     *
-     * @var float
-     */
-    private $longitude;
+    private $locations;
 
     /**
      * @ORM\Column(name="name", type="string", length=255)
@@ -66,22 +41,6 @@ class Brewery extends AbstractEntity
      * @var string
      */
     private $name;
-
-    /**
-     * @ORM\Column(name="state", type="string", length=2)
-     * @Annotation\Groups({"list"})
-     *
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @ORM\Column(name="postal", type="string", length=15)
-     * @Annotation\Groups({"list"})
-     *
-     * @var string
-     */
-    private $postal;
 
     /**
      * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Url", mappedBy="brewery", cascade={"persist","remove"})
@@ -101,6 +60,21 @@ class Brewery extends AbstractEntity
     }
 
     /**
+     * @param Brewery\Location $location
+     *
+     * @return Brewery
+     */
+    public function addLocation(Brewery\Location $location): Brewery
+    {
+        if (!$this->hasLocation($location)) {
+            $this->locations->add($location);
+            $location->setBrewery($this);
+        }
+
+        return $this;
+    }
+
+    /**
      * @param Brewery\Url $url
      *
      * @return Brewery
@@ -113,22 +87,6 @@ class Brewery extends AbstractEntity
         }
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAddress(): string
-    {
-        return $this->address;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCity(): string
-    {
-        return $this->city;
     }
 
     /**
@@ -150,43 +108,11 @@ class Brewery extends AbstractEntity
     }
 
     /**
-     * @return float
-     */
-    public function getLatitude(): float
-    {
-        return $this->latitude;
-    }
-
-    /**
-     * @return float
-     */
-    public function getLongitude(): float
-    {
-        return $this->longitude;
-    }
-
-    /**
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getState(): string
-    {
-        return $this->state;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPostal(): string
-    {
-        return $this->postal;
     }
 
     /**
@@ -258,6 +184,21 @@ class Brewery extends AbstractEntity
     }
 
     /**
+     * Return true/false if this Brewery object has the Brewery\Location object.
+     *
+     * @param Brewery\Location $location
+     *
+     * @return bool
+     */
+    public function hasLocation(Brewery\Location $location): bool
+    {
+        return $this->urls->exists(function($idx, Brewery\Location $_location) use ($location) {
+            return $location->getLatitude() === $_location->getLongitude()
+                && strcasecmp($location->getLabel(), $_location->getLabel()) === 0;
+        });
+    }
+
+    /**
      * Return true/false if the Brewery object has a Twitter URL.
      *
      * @return bool
@@ -293,6 +234,23 @@ class Brewery extends AbstractEntity
     }
 
     /**
+     * Remove the Brewery\Location object from the collection.
+     *
+     * @param Brewery\Location $location
+     *
+     * @return $this
+     */
+    public function removeLocation(Brewery\Location $location): self
+    {
+        if ($this->hasLocation($location)) {
+            $this->locations->removeElement($location);
+            $location->setBrewery(null);
+        }
+
+        return $this;
+    }
+
+    /**
      * Remove the Brewery\Url object from the collection.
      *
      * @param Brewery\Url $url
@@ -310,54 +268,6 @@ class Brewery extends AbstractEntity
     }
 
     /**
-     * @param string $address
-     *
-     * @return $this
-     */
-    public function setAddress(string $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * @param string $city
-     *
-     * @return $this
-     */
-    public function setCity(string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * @param float $latitude
-     *
-     * @return $this
-     */
-    public function setLatitude(float $latitude): self
-    {
-        $this->latitude = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * @param float $longitude
-     *
-     * @return $this
-     */
-    public function setLongitude(float $longitude): self
-    {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
-
-    /**
      * @param string $name
      *
      * @return $this
@@ -365,30 +275,6 @@ class Brewery extends AbstractEntity
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @param string $state
-     *
-     * @return $this
-     */
-    public function setState(string $state): self
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * @param string $postal
-     *
-     * @return $this
-     */
-    public function setPostal(string $postal): self
-    {
-        $this->postal = $postal;
 
         return $this;
     }
