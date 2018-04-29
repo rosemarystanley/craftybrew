@@ -36,6 +36,13 @@ class Url extends AbstractEntity
     private $brewery;
 
     /**
+     * @ORM\Column(name="brewerydb_id", type="string", length=10, unique=true)
+     *
+     * @var string
+     */
+    private $brewerydbId;
+
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
