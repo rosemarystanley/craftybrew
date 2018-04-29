@@ -286,10 +286,17 @@ class Brewery extends AbstractEntity
     }
 
     /**
-     * @return bool
+     * @param bool|null $organic
+     *
+     * @return bool|$this
      */
-    public function isOrganic(): bool
+    public function isOrganic(?bool $organic = null)
     {
+        if ($organic !== null) {
+            $this->organic = $organic;
+            return $this;
+        }
+
         return $this->organic;
     }
 
