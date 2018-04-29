@@ -24,7 +24,7 @@ class User implements UserInterface
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="bigint", length=20)
      *
      * @var integer|null
      */
