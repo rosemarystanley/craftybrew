@@ -25,7 +25,7 @@ class Url extends AbstractEntity
 
     /**
      * @ORM\ManyToOne(targetEntity="CraftyBrew\WebBundle\Entity\Brewery", inversedBy="urls")
-     * @ORM\JoinColumn(name="brewery_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="brewery_id", referencedColumnName="id", onDelete="CASCADE")
      *
      * @var Brewery
      */
