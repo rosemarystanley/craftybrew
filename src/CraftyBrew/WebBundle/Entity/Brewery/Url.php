@@ -179,6 +179,18 @@ class Url extends AbstractEntity
     }
 
     /**
+     * @param string $brewerydbId
+     *
+     * @return $this
+     */
+    public function setBreweryDBId(string $brewerydbId): self
+    {
+        $this->brewerydbId = $brewerydbId;
+
+        return $this;
+    }
+
+    /**
      * @param integer $id
      *
      * @return $this
