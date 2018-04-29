@@ -18,6 +18,27 @@ class Brewery extends AbstractEntity
     use EntityDateTrackingTrait;
 
     /**
+     * @ORM\Column(name="brewerydb_id", type="string", length=10, unique=true)
+     *
+     * @var string
+     */
+    private $brewerydbId;
+
+    /**
+     * @ORM\Column(name="description", type="text", nullable=true)
+     *
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(name="established", type="integer", length=4, nullable=true)
+     *
+     * @var integer
+     */
+    private $established;
+
+    /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
@@ -41,6 +62,13 @@ class Brewery extends AbstractEntity
      * @var string
      */
     private $name;
+
+    /**
+     * @ORM\Column(name="organic", type="boolean", options={"default": false})
+     *
+     * @var bool
+     */
+    private $organic;
 
     /**
      * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Url", mappedBy="brewery", cascade={"persist"})
@@ -87,6 +115,22 @@ class Brewery extends AbstractEntity
         }
 
         return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return integer|null
+     */
+    public function getEstablished(): ?int
+    {
+        return $this->established;
     }
 
     /**
@@ -231,6 +275,14 @@ class Brewery extends AbstractEntity
             return strcasecmp($url->getType(), $_url->getType()) === 0
                 && strcasecmp($url->getUrl(), $_url->getType()) === 0;
         });
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOrganic(): bool
+    {
+        return $this->organic;
     }
 
     /**
