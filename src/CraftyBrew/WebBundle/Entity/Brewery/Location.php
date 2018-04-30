@@ -296,6 +296,30 @@ class Location extends AbstractEntity
     }
 
     /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("brewery_name")
+     * @Serializer\Groups({"list"})
+     *
+     * @return string
+     */
+    public function serializeBreweryName()
+    {
+        return $this->brewery->getName();
+    }
+
+    /**
+     * @Serializer\VirtualProperty
+     * @Serializer\SerializedName("brewery_description")
+     * @Serializer\Groups({"list"})
+     *
+     * @return string
+     */
+    public function serializeBreweryDescription()
+    {
+        return $this->brewery->getDescription();
+    }
+
+    /**
      * @param string|null $address
      *
      * @return $this
