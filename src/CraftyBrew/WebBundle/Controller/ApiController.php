@@ -25,7 +25,7 @@ class ApiController extends Controller
      */
     public function breweriesAction()
     {
-        $breweries = $this->getDoctrine()->getRepository(Brewery::class)
+        $breweries = $this->getDoctrine()->getRepository(Brewery\Location::class)
             ->findAll();
 
         $serializer = $this->get('jms_serializer');
