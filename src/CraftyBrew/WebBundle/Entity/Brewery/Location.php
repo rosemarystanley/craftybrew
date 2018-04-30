@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CraftyBrew\WebBundle\Repository\Brewery\LocationRepository")
  * @ORM\Table(name="brewery_location", indexes={
  *     @ORM\Index(name="idx_brewery_location_brewery_id", columns={"brewery_id"})
  * })
