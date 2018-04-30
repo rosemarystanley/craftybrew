@@ -32,13 +32,17 @@ fetch('/api/breweries')
             dt.appendChild(document.createTextNode('Address'));
 
       const dd = document.createElement('dd');
-            dd.appendChild(document.createTextNode(brewery.address));
-            dd.appendChild(document.createElement('br'));
-            dd.appendChild(document.createTextNode(
-              brewery.city + ', ' +
-              brewery.state + ' ' +
-              brewery.postal)
-            );
+
+      if (brewery.address !== null) {
+        dd.appendChild(document.createTextNode(brewery.address));
+        dd.appendChild(document.createElement('br'));
+      }
+
+      dd.appendChild(document.createTextNode(
+        brewery.city + ', ' +
+        brewery.state + ' ' +
+        brewery.postal)
+      );
 
       const dl = document.createElement('dl');
             dl.appendChild(dt);
