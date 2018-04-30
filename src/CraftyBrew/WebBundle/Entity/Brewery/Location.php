@@ -8,6 +8,7 @@ use CraftyBrew\WebBundle\Entity\AbstractEntity;
 use CraftyBrew\WebBundle\Entity\Brewery;
 use CraftyBrew\WebBundle\Entity\EntityDateTrackingTrait;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -21,6 +22,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
@@ -28,6 +30,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="address_extended", type="string", length=255, nullable=true)
+     * @Serializer\Groups({"list"})
      *
      * @var string|null
      */
@@ -59,6 +62,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="city", type="string", length=100)
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
@@ -66,6 +70,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="hours", type="text", nullable=true)
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
@@ -73,6 +78,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="label", type="string", length=255)
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
@@ -80,6 +86,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="latitude", type="decimal", scale=6, precision=8)
+     * @Serializer\Groups({"list"})
      *
      * @var float
      */
@@ -87,6 +94,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="longitude", type="decimal", scale=6, precision=8)
+     * @Serializer\Groups({"list"})
      *
      * @var float
      */
@@ -94,6 +102,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="opened", type="integer", length=4, nullable=true)
+     * @Serializer\Groups({"list"})
      *
      * @var integer
      */
@@ -101,6 +110,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="phone", type="string", length=10, nullable=true)
+     * @Serializer\Groups({"list"})
      *
      * @var string|null
      */
@@ -108,6 +118,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="postal", type="string", length=10, nullable=true)
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
@@ -115,6 +126,7 @@ class Location extends AbstractEntity
 
     /**
      * @ORM\Column(name="state", type="string", length=20)
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */

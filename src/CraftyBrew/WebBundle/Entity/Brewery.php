@@ -7,7 +7,7 @@ namespace CraftyBrew\WebBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -42,7 +42,6 @@ class Brewery extends AbstractEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
-     * @Annotation\Groups({"list"})
      *
      * @var integer
      */
@@ -57,7 +56,6 @@ class Brewery extends AbstractEntity
 
     /**
      * @ORM\Column(name="name", type="string", length=255)
-     * @Annotation\Groups({"list"})
      *
      * @var string
      */
@@ -72,7 +70,6 @@ class Brewery extends AbstractEntity
 
     /**
      * @ORM\OneToMany(targetEntity="CraftyBrew\WebBundle\Entity\Brewery\Url", mappedBy="brewery", cascade={"persist"})
-     * @Annotation\Groups({"list"})
      *
      * @var Brewery\Url[]|Collection
      */

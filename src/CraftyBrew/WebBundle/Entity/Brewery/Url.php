@@ -8,7 +8,7 @@ use CraftyBrew\WebBundle\Entity\AbstractEntity;
 use CraftyBrew\WebBundle\Entity\Brewery;
 use CraftyBrew\WebBundle\Entity\EntityDateTrackingTrait;
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity
@@ -46,7 +46,7 @@ class Url extends AbstractEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
-     * @Annotation\Groups({"list"})
+     * @Serializer\Groups({"list"})
      *
      * @var integer
      */
@@ -54,7 +54,7 @@ class Url extends AbstractEntity
 
     /**
      * @ORM\Column(name="type", type="string", length=15)
-     * @Annotation\Groups({"list"})
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
@@ -62,7 +62,7 @@ class Url extends AbstractEntity
 
     /**
      * @ORM\Column(name="url", type="string", length=255)
-     * @Annotation\Groups({"list"})
+     * @Serializer\Groups({"list"})
      *
      * @var string
      */
