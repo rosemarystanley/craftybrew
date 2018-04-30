@@ -16,6 +16,7 @@ use JMS\Serializer\Annotation as Serializer;
  *     @ORM\Index(name="idx_brewery_url_brewery_id", columns={"brewery_id"}),
  *     @ORM\Index(name="idx_brewery_url_type", columns={"type"})
  * })
+ * @Serializer\ExclusionPolicy("all")
  */
 class Url extends AbstractEntity
 {
@@ -46,7 +47,6 @@ class Url extends AbstractEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
-     * @Serializer\Groups({"list"})
      *
      * @var integer
      */
@@ -54,6 +54,7 @@ class Url extends AbstractEntity
 
     /**
      * @ORM\Column(name="type", type="string", length=15)
+     * @Serializer\Expose
      * @Serializer\Groups({"list"})
      *
      * @var string
@@ -62,6 +63,7 @@ class Url extends AbstractEntity
 
     /**
      * @ORM\Column(name="url", type="string", length=255)
+     * @Serializer\Expose
      * @Serializer\Groups({"list"})
      *
      * @var string

@@ -12,6 +12,7 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @ORM\Entity
  * @ORM\Table(name="brewery")
+ * @Serializer\ExclusionPolicy("all")
  */
 class Brewery extends AbstractEntity
 {
