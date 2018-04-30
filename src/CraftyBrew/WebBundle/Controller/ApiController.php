@@ -30,7 +30,8 @@ class ApiController extends Controller
 
         $serializer = $this->get('jms_serializer');
         $context = SerializationContext::create()
-            ->setGroups(['default', 'list']);
+            ->setGroups(['default', 'list'])
+            ->setSerializeNull(true);
         return new JsonResponse($serializer->serialize($breweries, 'json', $context), 200, [], true);
     }
 }
