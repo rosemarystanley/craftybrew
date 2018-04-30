@@ -11,7 +11,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(map);
 
 // Get the map data
-fetch('/api/breweries')
+fetch('/api/locations')
   .then(function (response) {
     if (response.status >= 400) {
       throw new Error("Received the following error from the server: " + response.statusText);

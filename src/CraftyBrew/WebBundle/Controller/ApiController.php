@@ -17,8 +17,8 @@ class ApiController extends Controller
 {
     /**
      * @Route(
-     *     "/api/breweries",
-     *     name="api.breweries"
+     *     "/api/locations",
+     *     name="api.locations"
      * )
      *
      * @return string
