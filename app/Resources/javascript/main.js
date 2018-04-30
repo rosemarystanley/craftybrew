@@ -26,7 +26,7 @@ fetch('/api/breweries')
 
     breweries.forEach(function (brewery) {
       const h5 = document.createElement('h5');
-            h5.appendChild(document.createTextNode(brewery.name));
+            h5.appendChild(document.createTextNode(brewery.brewery_name));
 
       const dt = document.createElement('dt');
             dt.appendChild(document.createTextNode('Address'));
