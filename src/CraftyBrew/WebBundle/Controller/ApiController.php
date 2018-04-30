@@ -23,7 +23,7 @@ class ApiController extends Controller
      *
      * @return string
      */
-    public function breweriesAction()
+    public function locationsAction()
     {
         $breweries = $this->getDoctrine()->getRepository(Brewery\Location::class)
             ->findAll();
