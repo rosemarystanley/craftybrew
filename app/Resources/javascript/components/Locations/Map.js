@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import LocationsAddress from './Address';
 
 class LocationsMap extends React.Component {
   constructor(props) {
@@ -14,36 +15,6 @@ class LocationsMap extends React.Component {
       maxZoom: 18,
       style: 'mapbox.light',
     };
-  }
-
-  address(location) {
-    return (
-      <div>
-        {location.address &&
-        <span>{location.address}<br/></span>
-        }
-
-        {location.address_extended &&
-        <span>{location.address_extended}<br/></span>
-        }
-
-        {location.city &&
-        <span>{location.city}</span>
-        }
-
-        {(location.state || location.postal) &&
-        <span>,</span>
-        }
-
-        {location.state &&
-        <span> {location.state}</span>
-        }
-
-        {location.postal &&
-        <span> {location.postal}</span>
-        }
-      </div>
-    )
   }
 
   handleLocationChange(e) {
@@ -72,7 +43,6 @@ class LocationsMap extends React.Component {
     if (locations) {
       markers = locations.map(location => {
         const position = [ location.latitude, location.longitude ];
-        const address = this.address(location);
 
         return (
           <Marker position={position} key={location.id}>
@@ -82,7 +52,7 @@ class LocationsMap extends React.Component {
                 <dl>
                   <dt>Address</dt>
                   <dd>
-                    {address}
+                    <LocationsAddress location={location}/>
                   </dd>
                 </dl>
               </div>

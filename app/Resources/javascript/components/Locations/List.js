@@ -1,27 +1,11 @@
 import React from 'react';
+import LocationsAddress from './Address';
 
 class LocationsList extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleLocationsChange = this.handleLocationsChange.bind(this);
-  }
-
-  address(props) {
-    const location = props.location;
-
-    if (location.address_extended) {
-      return (
-        <span>
-          {location.address}<br/>
-          {location.address_extended}<br/>
-        </span>
-      )
-    } else {
-      return (
-        <span>{location.address}<br/></span>
-      )
-    }
   }
 
   handleLocationsChange(e) {
@@ -41,8 +25,7 @@ class LocationsList extends React.Component {
             <dl>
               <dt>Address</dt>
               <dd>
-                <this.address location={location}/>
-                {location.city}, {location.state} {location.postal}
+                <LocationsAddress location={location}/>
               </dd>
             </dl>
           </li>
