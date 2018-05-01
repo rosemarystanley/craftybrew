@@ -36,6 +36,11 @@ module.exports = merge(baseConfig, {
           outFile: path.resolve(__dirname, '../../../web/c')
         }
       }]
+    }, {
+      test : /\.js$/,
+      exclude: [/(node_modules)/],
+      include : path.resolve(__dirname, './'),
+      loader : 'babel-loader'
     }]
   },
   watch: true,
