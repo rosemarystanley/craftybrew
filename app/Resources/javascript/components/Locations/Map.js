@@ -17,33 +17,33 @@ class LocationsMap extends React.Component {
   }
 
   address(location) {
-    let address = '';
+    return (
+      <div>
+        {location.address &&
+        <span>{location.address}<br/></span>
+        }
 
-    if (location.address) {
-      address += <span>{location.address}<br/></span>
-    }
+        {location.address_extended &&
+        <span>{location.address_extended}<br/></span>
+        }
 
-    if (location.address_extended) {
-      address += <span>{location.address_extended}<br/></span>
-    }
+        {location.city &&
+        <span>{location.city}</span>
+        }
 
-    if (location.city) {
-      address += <span>{location.city}</span>
-    }
+        {(location.state || location.postal) &&
+        <span>,</span>
+        }
 
-    if (location.state || location.postal) {
-      address += ',';
+        {location.state &&
+        <span> {location.state}</span>
+        }
 
-      if (location.state) {
-        address += <span> {location.state}</span>
-      }
-
-      if (location.postal) {
-        address += <span> {location.postal}</span>
-      }
-    }
-
-    return <div>{address}</div>;
+        {location.postal &&
+        <span> {location.postal}</span>
+        }
+      </div>
+    )
   }
 
   handleLocationChange(e) {
