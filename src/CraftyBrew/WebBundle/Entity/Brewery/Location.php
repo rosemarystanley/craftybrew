@@ -58,6 +58,8 @@ class Location extends AbstractEntity
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="id", type="bigint", length=20)
+     * @Serializer\Expose
+     * @Serializer\Groups({"list"})
      *
      * @var integer
      */
