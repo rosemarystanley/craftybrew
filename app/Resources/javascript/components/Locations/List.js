@@ -13,12 +13,21 @@ class LocationsList extends React.Component {
   }
 
   render() {
-    const { locations } = this.props;
+    const { locations, handleListItemClick } = this.props;
 
     let list = [];
 
     if (locations) {
-      list = locations.map(location => <LocationsListItem location={location} key={location.id}/>);
+      list = locations.map(location => {
+        return (
+          <LocationsListItem
+            location={location}
+            key={location.id}
+            ref={ref => this.props.addListItem(ref)}
+            handleListItemClick={handleListItemClick}
+          />
+        )
+      });
     }
 
     return (

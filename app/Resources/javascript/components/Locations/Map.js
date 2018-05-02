@@ -45,7 +45,12 @@ class LocationsMap extends React.Component {
         const position = [ location.latitude, location.longitude ];
 
         return (
-          <Marker position={position} key={location.id}>
+          <Marker
+            position={position}
+            key={location.id}
+            ref={ref => this.props.addMarker(ref)}
+            onClick={() => this.props.handleMarkerClick(position)}
+          >
             <Popup>
               <div>
                 <h5>{location.brewery_name}</h5>
