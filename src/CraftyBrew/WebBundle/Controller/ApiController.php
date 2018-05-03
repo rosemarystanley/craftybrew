@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CraftyBrew\WebBundle\Controller;
 
 use CraftyBrew\WebBundle\Entity\Brewery;
+use CraftyBrew\WebBundle\Entity\Point;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,7 +27,7 @@ class ApiController extends Controller
     public function locationsAction()
     {
         $breweries = $this->getDoctrine()->getRepository(Brewery\Location::class)
-            ->findAll();
+            ->findByGeometry(new Point(35.227, -80.843), 0.25);
 
         $serializer = $this->get('jms_serializer');
         $context = SerializationContext::create()
