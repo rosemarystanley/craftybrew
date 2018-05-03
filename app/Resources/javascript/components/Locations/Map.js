@@ -1,6 +1,6 @@
 import React from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
-import LocationsAddress from './Address';
+import { Map, TileLayer } from 'react-leaflet';
+import MapMarker from './MapMarker';
 
 class LocationsMap extends React.Component {
   constructor(props) {
@@ -42,28 +42,12 @@ class LocationsMap extends React.Component {
 
     if (locations) {
       markers = locations.map(location => {
-        const position = [ location.latitude, location.longitude ];
-
-        return (
-          <Marker
-            position={position}
-            key={location.id}
-            ref={ref => this.props.addMarker(ref)}
-            onClick={() => this.props.handleMarkerClick(position)}
-          >
-            <Popup>
-              <div>
-                <h5>{location.brewery_name}</h5>
-                <dl>
-                  <dt>Address</dt>
-                  <dd>
-                    <LocationsAddress location={location}/>
-                  </dd>
-                </dl>
-              </div>
-            </Popup>
-          </Marker>
-        );
+        return <MapMarker
+          key={location.id}
+          location={location}
+          addMarker={this.props.addMarker}
+          handleMarkerClick={this.props.handleMarkerClick}
+        />;
       });
     }
 
