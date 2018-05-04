@@ -20,7 +20,6 @@ class MapMarker extends React.Component {
     return (
       <Marker
         position={point}
-        ref={ref => this.props.addMarker(ref)}
         onClick={() => this.props.handleMarkerClick(point)}
       >
         <Popup>

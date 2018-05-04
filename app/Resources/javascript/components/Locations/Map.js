@@ -79,11 +79,12 @@ class LocationsMap extends React.Component {
         return <MapMarker
           key={location.id}
           location={location}
-          addMarker={this.props.addMarker}
           handleMarkerClick={this.props.handleMarkerClick}
         />;
       });
     }
+
+    this.props.updateMarkers(markers);
 
     return (
       <Map

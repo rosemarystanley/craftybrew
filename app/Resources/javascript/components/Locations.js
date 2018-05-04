@@ -16,7 +16,7 @@ class Locations extends React.Component {
     };
 
     this.addListItemRef = this.addListItemRef.bind(this);
-    this.addMarkerRef = this.addMarkerRef.bind(this);
+    this.updateMarkerRefs = this.updateMarkerRefs.bind(this);
 
     this.handleListItemClick = this.handleListItemClick.bind(this);
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
@@ -32,12 +32,8 @@ class Locations extends React.Component {
     }
   }
 
-  addMarkerRef(marker) {
-    const markers = this.state.refs.markers;
-
-    if (markers.indexOf(marker) < 0) {
-      markers.push(marker);
-    }
+  updateMarkerRefs(markers) {
+    this.state.refs.markers = markers;
   }
 
   componentDidMount() {
@@ -130,7 +126,7 @@ class Locations extends React.Component {
           <LocationsMap
             accessToken={accessToken}
             locations={locations}
-            addMarker={this.addMarkerRef}
+            updateMarkers={this.updateMarkerRefs}
             handleMarkerClick={this.handleMarkerClick}
           />
         </div>
