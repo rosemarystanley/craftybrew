@@ -28,8 +28,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config=webpack.prod.config.js -p --progress --display=errors-only",
-    "start": "webpack --config=webpack.dev.config.js -d --progress --display=minimal --watch"
+    "build": "webpack --config=webpack.prod.config.js -p --progress",
+    "start": "webpack --config=webpack.dev.config.js -d --progress --watch"
   },
   "repository": {
     "type": "git",

@@ -6,5 +6,11 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../../../web/j')
   },
-  devtool: "source-map"
+  devtool: "source-map",
+  stats: {
+    all: false,
+    builtAt: true,
+    assets: true,
+    cached: true
+  }
 };
