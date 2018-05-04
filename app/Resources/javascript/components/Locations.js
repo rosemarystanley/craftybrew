@@ -1,4 +1,5 @@
 import React from 'react';
+import buildUrl from 'build-url';
 import LocationsMap from './Locations/Map';
 import LocationsList from './Locations/List';
 
@@ -46,8 +47,11 @@ class Locations extends React.Component {
     }
   }
 
-  static async fetch() {
-    const response = await fetch('/api/locations');
+  static async fetch(center, radius) {
+    const response = await fetch(buildUrl('', {
+      path: '/api/locations',
+      queryParams: { center: center || '', radius: radius || '' }
+    }));
     return await response.json();
   }
 
