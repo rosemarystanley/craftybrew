@@ -2,7 +2,7 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config.js');
 
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const ASSETS_PATH = path.resolve(__dirname, '../../../web/assets');
@@ -29,10 +29,9 @@ module.exports = merge(baseConfig, {
       loader: [
         MiniCssExtractPlugin.loader,
         {
-          loader: "css-loader",
+          loader: 'css-loader',
           options: {
             sourceMap: true,
-            importLoaders: 1,
             alias: {
               './images/layers.png': path.resolve(__dirname, 'node_modules/leaflet/dist/images/layers.png'),
               './images/layers-2x.png': path.resolve(__dirname, 'node_modules/leaflet/dist/images/layers-2x.png'),
@@ -42,7 +41,19 @@ module.exports = merge(baseConfig, {
             }
           }
         }, {
-          loader: "sass-loader",
+          loader: 'postcss-loader',
+          options: {
+            config: {
+              path: path.resolve(__dirname, 'postcss.config.js'),
+            },
+            indentedSyntax: true,
+            indentWidth: 4,
+            outputStyle: 'expanded',
+            sourceComments: true,
+            sourceMap: true,
+          }
+        }, {
+          loader: 'sass-loader',
           options: {
             includePaths: [SASS_PATH],
             indentedSyntax: true,
@@ -60,6 +71,20 @@ module.exports = merge(baseConfig, {
       loader: 'file-loader',
       options: {
         name: 'images/[name].[ext]',
+      }
+    }, { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: 'fonts/[name].[ext]'
+      }
+    },
+    {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file-loader',
+      options: {
+        limit: 10000,
+        name: 'fonts/[name].[ext]'
       }
     }, {
       test: /\.js$/,
