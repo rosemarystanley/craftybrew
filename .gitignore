@@ -1,10 +1,10 @@
-.idea
-.vagrant
 .DS_Store
 ._DS_Store
-vendor
+
+/.idea
+/.vagrant
+/vendor
 /var/logs/*
 /app/config/parameters.yml
-/app/Resources/javascript/node_modules/*
-web/c/*
-web/j/*
+/app/Resources/node_modules/*
+/web/assets/*
