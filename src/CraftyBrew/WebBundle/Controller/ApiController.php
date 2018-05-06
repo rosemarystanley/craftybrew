@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\SerializationContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -24,10 +25,13 @@ class ApiController extends Controller
      *
      * @return string
      */
-    public function locationsAction()
+    public function locationsAction(Request $request)
     {
+        $latitude = $request->query->get('latitude', 35.227);
+        $longitude = $request->query->get('longitude', -80.843);
+        $distance = $request->query->get('distance', 1 / 69.172);
         $breweries = $this->getDoctrine()->getRepository(Brewery\Location::class)
-            ->findByGeometry(new Point(35.227, -80.843), 0.25);
+            ->findByGeometry(new Point($latitude, $longitude), $distance);
 
         $serializer = $this->get('jms_serializer');
         $context = SerializationContext::create()

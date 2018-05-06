@@ -35,7 +35,7 @@ class LocationsMap extends React.Component {
 
     console.log('Location found: %o', e);
 
-    this.state.origin = e.latlng;
+    this.setState({ origin: e.latlng });
 
     L.marker(this.state.origin).addTo(map).bindPopup('You are here.').openPopup();
     L.circle(this.state.origin, {radius: e.accuracy / 2 * this.state.zoom, color: this.state.originColor}).addTo(map);
@@ -48,7 +48,7 @@ class LocationsMap extends React.Component {
 
     console.log('Unable to get location: %o', e);
 
-    this.state.origin = [35.227, -80.843];
+    this.setState({ origin: [35.227, -80.843] });
 
     L.marker(this.state.origin).addTo(map).bindPopup('You are here.').openPopup();
     L.circle(this.state.origin, {radius: 26.2 * this.state.zoom, color: this.state.originColor}).addTo(map);
@@ -84,9 +84,7 @@ class LocationsMap extends React.Component {
       });
     }
 
-    this.props.updateMarkers(markers);
-
-    return (
+    const returnMap = (
       <Map
         center={latlng}
         zoom={zoom}
@@ -94,6 +92,8 @@ class LocationsMap extends React.Component {
         ref="map"
         onLocationfound={this.handleLocationFound}
         onLocationError={this.handleLocationError }
+        onMoveEnd={this.props.handleMoveEnd}
+        onMoveStart={this.props.handleMoveStart}
       >
         <TileLayer
           attribution="Map data &copy; <a href=&quot;http://openstreetmap.org&quot;>OpenStreetMap</a> contributors, <a href=&quot;http://creativecommons.org/licenses/by-sa/2.0/&quot;>CC-BY-SA</a>, Imagery © <a href=&quot;http://mapbox.com&quot;>Mapbox</a>"
@@ -105,6 +105,10 @@ class LocationsMap extends React.Component {
         {markers}
       </Map>
     );
+
+    this.props.updateMarkers(markers, this.refs.map);
+
+    return returnMap;
   }
 }
 

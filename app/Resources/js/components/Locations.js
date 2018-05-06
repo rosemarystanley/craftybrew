@@ -13,7 +13,9 @@ class Locations extends React.Component {
       refs: {
         markers: [],
         listItems: [],
+        map: undefined,
       },
+      centerPoint: undefined
     };
 
     this.addListItemRef = this.addListItemRef.bind(this);
@@ -21,6 +23,8 @@ class Locations extends React.Component {
 
     this.handleListItemClick = this.handleListItemClick.bind(this);
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
+    this.handleMoveEnd = this.handleMoveEnd.bind(this);
+    this.handleMoveStart = this.handleMoveStart.bind(this);
 
     this.scrollTo = this.scrollTo.bind(this);
   }
@@ -33,24 +37,16 @@ class Locations extends React.Component {
     }
   }
 
-  updateMarkerRefs(markers) {
-    this.state.refs.markers = markers;
+  updateMarkerRefs(markers, map) {
+    const refs = this.state.refs;
+    refs.markers = markers;
+    refs.map = map;
   }
 
-  componentDidMount() {
-    try {
-      this.constructor
-        .fetch()
-          .then(locations => this.setState({ locations: locations }));
-    } catch (e) {
-      throw e;
-    }
-  }
-
-  static async fetch(center, radius) {
+  static async fetch(center, distance) {
     const response = await fetch(buildUrl('', {
       path: '/api/locations',
-      queryParams: { center: center || '', radius: radius || '' }
+      queryParams: { latitude: center.lat || '', longitude: center.lng || '', distance: distance || '' }
     }));
     return await response.json();
   }
@@ -66,14 +62,18 @@ class Locations extends React.Component {
    */
   handleListItemClick(position) {
     const markers = this.state.refs.markers;
-    const marker = markers.filter(marker => marker.props.position.toString() === position.toString())
+    const marker = markers.filter(marker => {
+      const location = marker.props.location;
+      const _position = [location.latitude, location.longitude];
+      return ''+_position === ''+position
+    })
       .shift();
 
     if (marker) {
+      const map = this.state.refs.map;
       const listItems = this.state.refs.listItems;
 
-      marker.leafletElement._map.flyTo(position);
-      marker.leafletElement.openPopup();
+      map.leafletElement.flyTo(position);
 
       listItems.map(listItem => this.constructor.handleListItemSelection(listItem, position));
     }
@@ -104,7 +104,7 @@ class Locations extends React.Component {
    * ii. Scroll the unordered list to the corresponding item
    * 3. Select the item as active, and deselect previous active items
    *
-   * @param marker
+   * @param position
    */
   handleMarkerClick(position) {
     const listItems = this.state.refs.listItems;
@@ -121,6 +121,52 @@ class Locations extends React.Component {
     }
   }
 
+  /**
+   * The idea is to allow minute movements within an expanded bounding box before updating the list
+   * of breweries. Any time the map displays outside of this expanded bounding box, then update the list.
+   *
+   * Idea 1: Calculate a +/- n-mile radius around the center of the map, and any time the center moves outside of that
+   *         radius, then update. No bounding box required.
+   *
+   * @param e
+   */
+  handleMoveEnd(e) {
+    const mapElement = e.target;
+    const newCenter = mapElement.getCenter();
+    const centerPoint = this.state.centerPoint;
+    const mileRadius = 1 / 69.172;
+
+    try {
+      // If no center point exists, or the center point has moved more than one mile from
+      // it's original position, then update the list.
+      if (!centerPoint || (Math.abs(newCenter.lat - centerPoint.lat)) > mileRadius) {
+        const bounds = mapElement.getBounds();
+        // Divide the calculated distance (meters) by 111,111.1 meters (1º of latitude)
+        // This should take into account zoom factor and draw a radius beyond the visible
+        // view port.
+        const distance = mapElement.distance(bounds.getNorthWest(), newCenter) / 111111.1;
+
+        this.constructor
+          .fetch(newCenter, distance)
+            .then(locations => {
+              this.setState({ centerPoint: newCenter, locations: locations });
+            });
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  handleMoveStart(e) {
+    const mapElement = e.target;
+
+    if (!this.state.centerPoint) {
+      this.forceUpdate();
+    }
+
+    this.setState({ centerPoint: mapElement.getCenter() });
+  }
+
   render() {
     const { locations, accessToken } = this.state;
 
@@ -132,6 +178,8 @@ class Locations extends React.Component {
             locations={locations}
             updateMarkers={this.updateMarkerRefs}
             handleMarkerClick={this.handleMarkerClick}
+            handleMoveEnd={this.handleMoveEnd}
+            handleMoveStart={this.handleMoveStart}
           />
         </div>
         <div id="map-list" className="col-md mt-3 pt-2 pb-2">
